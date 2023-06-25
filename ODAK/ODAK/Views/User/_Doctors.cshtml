@@ -1,0 +1,294 @@
+﻿@model SecretaryViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+    <link href="~/template/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="~/template/css/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="~/template/css/owl.carousel.min.css" rel="stylesheet">
+
+    <link href="~/template/css/owl.theme.default.min.css" rel="stylesheet">
+
+    <link href="~/template/css/templatemo-medic-care.css" rel="stylesheet">
+
+    <title>_Doctors</title>
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-sm fixed-top  shadow-lg bg-light">
+        <img class="  text-light d-none d-lg-block" style="margin-left:10px;margin-right:10px;" width="70" height="60" src="~/img/T.C._Aile_ve_Sosyal_Hizmetler_Bakanlığı_logo.svg.png" />
+        <img class="  text-light d-none d-lg-block" width="90" height="50" src="~/img/logo1.png" />
+        <div class="container">
+            <a style="color: #0d6efd" class="navbar-brand  mx-auto d-lg-none" href="index.html">
+                ODAK
+                <img style="margin-left:50px;" width="70" height="60" src="~/img/T.C._Aile_ve_Sosyal_Hizmetler_Bakanlığı_logo.svg.png" />
+                <img width="90" height="50" src="~/img/Huawei-Logo.png" />
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+
+            <div class="mx-0  collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+
+
+                    <li class="nav-item active">
+                        <a class="nav-link " style="color: #0d6efd" href="~/">Anasayfa</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link " style="color: #0d6efd" href="/user/about">Hakkımızda</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " style="color: #0d6efd" href="/user/work">Çalışma Alanlarımız</a>
+                    </li>
+
+
+                    @* <li class="nav-item">
+                    <a class="nav-link text-light" href="#test">Testler</a>
+                    </li>
+
+                    <li class="nav-item">
+                    <a class="nav-link text-light" href="#egitim">Eğitimler</a>
+                    </li>*@
+
+                    <li class="nav-item ml-5">
+                        <div class="dropdown show mt-2">
+                            <a style="color: #0d6efd" class="btn nav-  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Bloglar
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="/user/test">Testler</a>
+                                <a class="dropdown-item" href="~/#aktif">Eğitimler</a>
+                                <a class="dropdown-item" href="~/user/blog">Bloglar</a>
+
+                            </div>
+                        </div>
+
+                    </li>
+                    <a class="navbar-brand d-none d-lg-block">
+                        ODAK
+                        <strong class="d-block">
+                            Sağlık Uzmanı
+                        </strong>
+                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link " style="color: #0d6efd" href="/user/online">Online Danışmanlık</a>
+                    </li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item ml-5">
+                            <div class="dropdown show mt-2">
+                                <a style="color: #0d6efd" class="btn nav-  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Randevu İşlemleri
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a style="color: #0d6efd" class="dropdown-item" href="/user/randevu">Randevu Al</a>
+                                    <a style="color: #0d6efd" class="dropdown-item" href="/user/randevudetay">Aktif Randevularınız</a>
+
+
+                                </div>
+                            </div>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link " style="color: #0d6efd" href="/user/randevu">Randevu Al</a>
+                        </li>
+                    }
+
+
+                    <li class="nav-item">
+                        <a class="nav-link " style="color: #0d6efd" href="~/#footer">İletişim</a>
+                    </li>
+
+
+
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+
+                        @if (Model.User.ImageUrl == null)
+                        {
+                            <li class="nav-item ml-5">
+                                <div class="dropdown show mt-2">
+                                    <a style="color:#0d6efd" class="btn     dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bi bi-person"></i>  Sn. @User.Identity.Name
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" href="/account/accountSetting">Hesap Ayarları</a>
+                                        <a class="dropdown-item" href="~/#aktif">Aktif Randevular</a>
+                                        <a style="color:#0d6efd" href="~/account/logout" class="nav-link ">Çıkış Yap</a>
+                                        @if (User.IsInRole("Secretary"))
+                                        {
+                                            <a class="dropdown-item" href="/profile/index">Sekreter Paneli</a>
+                                        }
+                                        @if (User.IsInRole("Dentist"))
+                                        {
+                                            <a class="dropdown-item" href="/profile/index">Doktor Paneli</a>
+                                        }
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <a class="dropdown-item" href="/admin/index">Yönetici Paneli</a>
+                                        }
+
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item ml-5">
+                                <div class="dropdown show mt-2">
+                                    <a style="margin-left:100px;color:#0d6efd" class="btn   dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img style="border-radius:50%;position:absolute;margin-left:-80px;margin-top:-12px;" width="60" height="55" src="~/img/@Model.User.ImageUrl" />  Sn. @User.Identity.Name
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" href="/account/accountSetting">Hesap Ayarları</a>
+                                        <a class="dropdown-item" href="~/#aktif">Aktif Randevular</a>
+
+                                        @if (User.IsInRole("Secretary"))
+                                        {
+                                            <a class="dropdown-item" href="/profile/index">Sekreter Paneli</a>
+                                        }
+                                        @if (User.IsInRole("Dentist"))
+                                        {
+                                            <a class="dropdown-item" href="/profile/index">Doktor Paneli</a>
+                                        }
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <a class="dropdown-item" href="/admin/index">Yönetici Paneli</a>
+                                        }
+                                        <a style="color:#0d6efd" href="~/account/logout" class="nav-link ">Çıkış Yap</a>
+                                    </div>
+                                </div>
+
+                            </li>
+                        }
+                    }
+
+
+
+                    else
+                    {
+                        <li style="opacity:0 ;margin-right:20px" class="nav-item float-end">
+                            <a style="color: #0d6efd" class="nav-link ">Giriş Yap</a>
+                        </li>
+
+                        <li class="nav-item float-end">
+                            <a href="~/account/login" style="color: #0d6efd" class="nav-link ">Giriş Yap</a>
+                        </li>
+                        <li class="nav-item float-end">
+                            <a href="~/account/register" style="color: #0d6efd" class="nav-link ">Kaydol</a>
+                        </li>
+                    }
+
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    
+
+    <section class="section-padding" id="about">
+        <div class="container">
+            <div class="row">
+
+                <br /><br>
+                <div class="col-md-7">
+                    <h3 style="color:#0d6efd">Nida Reis</h3>
+            
+                    <p style="color:black"> Uzm. Psikolojik Danışman</p>
+                    <p style="color:black">  Oyun Terapisti / Aile Danışmanı</p>
+                    <p style="color:black">
+                        2018 Karadeniz Teknik Üniversitesi Psikolojik Danışmanlık ve Rehberlik Bölümü mezunudur. Lisans
+                        dönemi boyunca okullarda gözlem ve staj yapabilme imkanı bulmuştur. Aynı zamanda göçmen
+                        çocuklarla TODA ‘Bende oynamak istiyorum’ projesine katılmıştır. 2019 yılında Ankara’da 460 saatlik
+                        Aile Danışmanlığı eğitimini tamamlamıştır. Aynı sene Trabzon’da özel bir orta okulda staj yapmış,
+                        çocuklarla sınav kaygısı, verimli ders çalışma alanında çalışmalarda bulunmuş ve bireysel danışmanlık
+                        yapmıştır. 2020 senesinde Yomra Merkez İlkokulda Özel Eğitim öğretmenliği alanında çalışmış. 2020-
+                        2021 yılında Yeditepe Üniversitesi Psikolojik Danışmanlık ve Rehberlik Bölümü yüksek lisansını
+                        tamamlamıştır. Eğitim döneminde Pozitif psikoloji alanında sertifika eğitimi almıştır. 2023’de Prof. Dr.
+                        Veli Duyan tarafından verilen Sorun Odaklı Aile Terapisi Eğitimini ve Klinik Psikolog Beril Zeynep
+                        Hacıosman tarafından verilen Oyun Terapisi eğitimini tamamlamıştır. Aynı zamanda Rasyonel Psikoloji
+                        Enstitüsü’nden testler eğitimini ve Moxo Türkiye’den moxo testi eğitimi almıştır. Yeşilay gönüllüsü ve
+                        gönüllü olarak aktif çalışmalarda bulunmuştur. Özel Odak Aile Danışma ve Eğitim Merkezi’nin
+                        kurucusudur ve kurumda Oyun terapisi alanında çalışmaktadır.
+                    </p>
+                
+                </div>
+                <div class="col-md-4">
+                    <br />
+                    <img width="550" height="450" src="~/img/doctor.jpeg" />
+                 
+                 
+                </div>
+                <div class="col-md-7">
+                    <h4 style="color:#0d6efd">Uyguladığı Testler            </h4>
+                    <ul>
+                        <li>Moxo Dikkat Testi</li>
+                        <li>WİSC-R</li>
+                        <li>Standford Binet Zeka Test</li>
+                        <li>MMPI Kişilik Envanteri</li>
+                        <li>
+                            Metropolitan Okul Olgunluğu Testi
+                        </li>
+                        <li>Peabody Resim-Kelime Eşleştirme Testi</li>
+                        <li>S.D. Porteus Labirentleri Testi</li>
+                        <li>Goodenough-Harris Bir İnsan Çiz Testi</li>
+                        <li>R.B. Cattel Test</li>
+                        <li>Frankfurter Dikkat testi</li>
+                        <li>
+                            Burdon Dikkat Testi
+                        </li>
+                        <li>D2 Dikkat Test</li>
+                        <li>Bender-Gestalt Görsel Motor Algılama Test</li>
+                    </ul>
+                </div>
+                <div class="col-md-4"> <br /><img width="450" height="350" src="~/img/test.jpg"/></div>
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>

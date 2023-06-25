@@ -1,0 +1,55 @@
+﻿@model AddBlogViewModel
+@{
+    ViewData["Title"] = "UpdateBlog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-primary">Blog Güncelle</h1>
+<hr class="bg-primary" />
+<br />
+
+<form asp-controller="Profile" asp-action="UpdateBlog" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="BlogId" />
+    <br />
+    <div class="col-md-12">
+        <div class="form-group row">
+            <label asp-for="BlogName" class="col-sm-2 col-form-label"><b>Blog Adı</b></label>
+            <div class="col-sm-8">
+                <input asp-for="BlogName" class="form-control">
+                <span class="text-danger" asp-validation-for="BlogName"></span>
+
+            </div>
+        </div>
+        <br />
+        <div class="form-group row">
+            <label asp-for="BlogTitle" class="col-sm-2 col-form-label"><b>Blog Başlığı</b></label>
+            <div class="col-sm-8">
+                <input asp-for="BlogTitle" class="form-control">
+                <span class="text-danger" asp-validation-for="BlogTitle"></span>
+
+            </div>
+        </div>
+        <br />
+        <div class="form-group row">
+            <label asp-for="BlogContent" class="col-sm-2 col-form-label"><b>Blog İçeriği</b></label>
+            <div class="col-sm-8">
+                <textarea asp-for="BlogContent" type="" class="form-control"></textarea>
+                <span class="text-danger" asp-validation-for="BlogContent"></span>
+            </div>
+        </div>
+        <br />
+        <div class="form-group row">
+            <label asp-for="ImageUrl" class="col-sm-2 col-form-label"><b>Blog Resmi</b></label>
+            <div class="col-sm-8">
+                <img width="170" height="120" src="~/blogImage/@Model.Image" />
+                <br /><br />
+                <input type="file" name="ImageUrl" />
+                <span class="text-danger" asp-validation-for="ImageUrl"></span>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="ml-3 btn btn-primary "> Blog Güncelle</button>
+
+</form>
+

@@ -1,0 +1,70 @@
+﻿@model SecretaryViewModel
+@{
+    ViewData["Title"] = "Secretary";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="col-md-8 ">
+
+    <form class="needs-validation" asp-controller="Appointment" asp-action="Checkout" method="post">
+       
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+                <label>Telefon Numarası</label>
+                <input asp-for="PaymentModel.Phone" type="text" class="form-control" placeholder="" required="">
+
+                <div class="invalid-feedback"> Name on card is required </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Mail Hesabı</label>
+                <input asp-for="PaymentModel.Email" type="text" class="form-control" placeholder="" required="">
+                <div class="invalid-feedback"> Credit card number is required </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+                <label >Kart Adı</label>
+                <input asp-for="PaymentModel.CardName"  type="text" class="form-control" placeholder="" required="">
+
+                <div class="invalid-feedback"> Name on card is required </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Kart Numarası</label>
+                <input asp-for="PaymentModel.CardNumber" type="text" class="form-control" placeholder="" required="">
+                <div class="invalid-feedback"> Credit card number is required </div>
+            </div>
+
+
+
+        </div>
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <label>Son Kullanma Ayı</label>
+                <input asp-for="PaymentModel.ExparitonMonth" type="text" class="form-control" placeholder="" required="">
+                <div class="invalid-feedback"> Expiration date required </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label >Son Kullanma Yılı</label>
+                <input asp-for="PaymentModel.ExparitionYear" type="text" class="form-control" placeholder="" required="">
+                <div class="invalid-feedback"> Expiration date required </div>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label >CVV</label>
+                <input asp-for="PaymentModel.CVV" type="text" class="form-control" placeholder="" required="">
+                <div class="invalid-feedback"> Security code required </div>
+            </div>
+            <button class="btn btn-outline-dark btn-lg btn-block mb-6" type="submit">Continue to checkout</button>
+
+        </div>
+        <hr class="mb-4">
+
+    </form>
+</div>

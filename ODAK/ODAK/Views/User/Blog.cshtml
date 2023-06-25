@@ -1,0 +1,365 @@
+﻿@model SecretaryViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Medic Care Bootstrap 5 CSS Template</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+    <link href="~/template/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="~/template/css/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="~/template/css/owl.carousel.min.css" rel="stylesheet">
+
+    <link href="~/template/css/owl.theme.default.min.css" rel="stylesheet">
+
+    <link href="~/template/css/templatemo-medic-care.css" rel="stylesheet">
+
+    <!--
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        TemplateMo 566 Medic Care
+
+        https://templatemo.com/tm-566-medic-care
+
+        -->
+</head>
+<body>
+
+
+
+
+    <nav class="navbar navbar-expand-sm fixed-top  shadow-lg bg-light">
+        <img class="  text-light d-none d-lg-block" style="margin-left:10px;margin-right:10px;" width="70" height="60" src="~/img/T.C._Aile_ve_Sosyal_Hizmetler_Bakanlığı_logo.svg.png" />
+        <img class="  text-light d-none d-lg-block" width="90" height="50" src="~/img/logo1.png" />
+        <div class="container">
+            <a style="color: #0d6efd" class="navbar-brand  mx-auto d-lg-none" href="index.html">
+                ODAK
+                <img style="margin-left:50px;" width="70" height="60" src="~/img/T.C._Aile_ve_Sosyal_Hizmetler_Bakanlığı_logo.svg.png" />
+                <img width="90" height="50" src="~/img/Huawei-Logo.png" />
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+
+            <div class="mx-0  collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+
+
+                    <li class="nav-item active">
+                        <a class="nav-link " style="color: #0d6efd" href="~/">Anasayfa</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link " style="color: #0d6efd" href="/user/about">Hakkımızda</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " style="color: #0d6efd" href="/user/work">Çalışma Alanlarımız</a>
+                    </li>
+
+
+                    @* <li class="nav-item">
+                    <a class="nav-link text-light" href="#test">Testler</a>
+                    </li>
+
+                    <li class="nav-item">
+                    <a class="nav-link text-light" href="#egitim">Eğitimler</a>
+                    </li>*@
+
+                    <li class="nav-item ml-5">
+                        <div class="dropdown show mt-2">
+                            <a style="color: #0d6efd" class="btn nav-  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Bloglar
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="/user/test">Testler</a>
+                                <a class="dropdown-item" href="~/#aktif">Eğitimler</a>
+                                <a class="dropdown-item" href="~/user/blog">Bloglar</a>
+
+                            </div>
+                        </div>
+
+                    </li>
+                    <a class="navbar-brand d-none d-lg-block">
+                        ODAK
+                        <strong class="d-block">
+                            Sağlık Uzmanı
+                        </strong>
+                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link " style="color: #0d6efd" href="/user/online">Online Danışmanlık</a>
+                    </li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item ml-5">
+                            <div class="dropdown show mt-2">
+                                <a style="color: #0d6efd" class="btn nav-  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Randevu İşlemleri
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a style="color: #0d6efd" class="dropdown-item" href="/user/randevu">Randevu Al</a>
+                                    <a style="color: #0d6efd" class="dropdown-item" href="/user/randevudetay">Aktif Randevularınız</a>
+
+
+                                </div>
+                            </div>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link " style="color: #0d6efd" href="/user/randevu">Randevu Al</a>
+                        </li>
+                    }
+
+
+                    <li class="nav-item">
+                        <a class="nav-link " style="color: #0d6efd" href="~/#footer">İletişim</a>
+                    </li>
+
+
+
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+
+                        @if (Model.User.ImageUrl == null)
+                        {
+                            <li class="nav-item ml-5">
+                                <div class="dropdown show mt-2">
+                                    <a style="color:#0d6efd" class="btn     dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bi bi-person"></i>  Sn. @User.Identity.Name
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" href="/account/accountSetting">Hesap Ayarları</a>
+                                        <a class="dropdown-item" href="~/#aktif">Aktif Randevular</a>
+                                        <a style="color:#0d6efd" href="~/account/logout" class="nav-link ">Çıkış Yap</a>
+                                        @if (User.IsInRole("Secretary"))
+                                        {
+                                            <a class="dropdown-item" href="/profile/index">Sekreter Paneli</a>
+                                        }
+                                        @if (User.IsInRole("Dentist"))
+                                        {
+                                            <a class="dropdown-item" href="/profile/index">Doktor Paneli</a>
+                                        }
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <a class="dropdown-item" href="/admin/index">Yönetici Paneli</a>
+                                        }
+
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item ml-5">
+                                <div class="dropdown show mt-2">
+                                    <a style="margin-left:100px;color:#0d6efd" class="btn   dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img style="border-radius:50%;position:absolute;margin-left:-80px;margin-top:-12px;" width="60" height="55" src="~/img/@Model.User.ImageUrl" />  Sn. @User.Identity.Name
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" href="/account/accountSetting">Hesap Ayarları</a>
+                                        <a class="dropdown-item" href="~/#aktif">Aktif Randevular</a>
+
+                                        @if (User.IsInRole("Secretary"))
+                                        {
+                                            <a class="dropdown-item" href="/profile/index">Sekreter Paneli</a>
+                                        }
+                                        @if (User.IsInRole("Dentist"))
+                                        {
+                                            <a class="dropdown-item" href="/profile/index">Doktor Paneli</a>
+                                        }
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <a class="dropdown-item" href="/admin/index">Yönetici Paneli</a>
+                                        }
+                                        <a style="color:#0d6efd" href="~/account/logout" class="nav-link ">Çıkış Yap</a>
+                                    </div>
+                                </div>
+
+                            </li>
+                        }
+                    }
+
+
+
+                    else
+                    {
+                        <li style="opacity:0 ;margin-right:20px" class="nav-item float-end">
+                            <a style="color: #0d6efd" class="nav-link ">Giriş Yap</a>
+                        </li>
+
+                        <li class="nav-item float-end">
+                            <a href="~/account/login" style="color: #0d6efd" class="nav-link ">Giriş Yap</a>
+                        </li>
+                        <li class="nav-item float-end">
+                            <a href="~/account/register" style="color: #0d6efd" class="nav-link ">Kaydol</a>
+                        </li>
+                    }
+
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    <br />
+    
+
+            <div class="col-md-10 container ">
+            <h2 style="color:#0d6efd" class="text-center">Bloglar</h2>
+            <hr />
+             <div class="ml-5 w-80  row">
+
+            @foreach (var blog in ViewBag.blogs)
+        {        <div class="col-md-4">
+                    <br>
+                    <div id="hover" class="card text-center" style="background-color:cornflowerblue;">
+                        <br>
+                        <img height="260px;" src="~/BlogImage/@blog.BlogImageUrl" alt="card-img-top" />
+                        <div class="card-body">
+                            <h5 class="card-title">@blog.BlogName</h5>
+                            <p class="card-text text-light">
+                                @blog.BlogTitle
+                            </p>
+                            <a style="color:$0d6efd" href="/user/blogcontent/@blog.Id" class="btn btn-outline-light ">Daha Fazlası İçin...</a>
+                        </div>
+                        </div>
+                         </div>
+                 }
+    
+   
+            
+     </div>
+
+        </div>
+
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+            </div>
+            <!-- Left -->
+            <!-- Right -->
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+        <!-- Section: Links  -->
+        <section style="border:0px solid #0d6efd">
+            <div class="container bg-light text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-5  mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 style="color:#0d6efd" class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Açılış Saatleri
+                        </h6>
+                        <ul class="list-group list-group-flush">
+
+                            <li class="list-group-item d-flex">
+                                Pazar
+                                <span>Kapalı</span>
+                            </li>
+                            <li class="list-group-item d-flex">
+                                Pazartesi, Salı - Cuma
+                                <span>8:00  - 5:30 </span>
+                            </li>
+
+                            <li class="list-group-item d-flex">
+                                Cumartesi
+                                <span>10:30  - 6:30 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 style="color:#0d6efd" class=" fw-bold mb-4">İLETİŞİM</h6>
+
+                        <p style="color:black">Mail: <a target="_blank" href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=odak_aile@homail.com">odak_aile@homail.com</a><p>
+                        <p style="color:black">Telefon: <a class="text-muted">0531 367 0154</a></><p>
+
+                        <p style="color:black">
+                            Adres:
+                            <span class="text-muted">
+                                Kaşüstü Mahallesi Merkez Caddesi Sedef Apt. 24/b no:34
+                                Yomra/Trabzon
+                            </span>
+
+                        </p>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+        </section>
+        <!-- Section: Links  -->
+        <!-- Copyright -->
+        <div class="text-center p-4 text-light" style="background-color: #0d6efd">
+            <ul class="social-icon">
+                <li><a style="color:aliceblue" href="#" class="social-icon-link bi-facebook"></a></li>
+
+                <li><a style="color:aliceblue" href="#" class="social-icon-link bi-twitter"></a></li>
+
+                <li><a style="color:aliceblue" href="#" class="social-icon-link bi-instagram"></a></li>
+
+                <li><a style="color:aliceblue" href="#" class="social-icon-link bi-youtube"></a></li>
+            </ul>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="~/template/js/jquery.min.js"></script>
+    <script src="~/template/js/bootstrap.bundle.min.js"></script>
+    <script src="~/template/js/owl.carousel.min.js"></script>
+    <script src="~/template/js/scrollspy.min.js"></script>
+    <script src="~/template/js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--
+
+    TemplateMo 566 Medic Care
+
+
+    https://templatemo.com/tm-566-medic-care
+
+    -->
+</body>
+</html>

@@ -1,0 +1,145 @@
+﻿<nav class="navbar navbar-expand-xxl  navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a style="color:#0d6efd" class="navbar-brand d-none d-lg-block">
+            ODAK
+
+        </a>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+
+
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="~/#hero">Anasayfa</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="~/#about">Hakkımızda</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#timeline">Doktorlarımız</a>
+                </li>
+
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="~/#reviews">Yorumlar</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="~/#booking">Randevu İşlemleri</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="~/#contact">İletişim</a>
+                </li>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+
+                    @if (User.IsInRole("Secretary"))
+                    {
+                        <li class="nav-item ml-5">
+                            <div class="dropdown show mt-2">
+                                <a style="color:#0d6efd" class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="bi bi-person"></i>  Sn. @User.Identity.Name
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="/account/accountSetting">Hesap Ayarları</a>
+                                    <a class="dropdown-item" href="~/#aktif">Aktif Randevular</a>
+                                    <a class="dropdown-item" href="/profile/index">Sekreter Paneli</a>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item float-end">
+                            <a href="~/account/logout" style="color:#0d6efd" class="nav-link">Çıkış Yap</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Dentist"))
+                    {
+                        <li class="nav-item ml-5">
+                            <div class="dropdown show mt-2">
+                                <a style="color:#0d6efd" class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="bi bi-person"></i>  Sn. @User.Identity.Name
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="/account/accountSetting">Hesap Ayarları</a>
+                                    <a class="dropdown-item" href="~/#aktif">Aktif Randevular</a>
+                                    <a class="dropdown-item" href="/profile/index">Doktor Paneli</a>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item float-end">
+                            <a href="~/account/logout" style="color:#0d6efd" class="nav-link">Çıkış Yap</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item ml-5">
+                            <div class="dropdown show mt-2">
+                                <a style="color:#0d6efd" class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="bi bi-person"></i>  Sn. @User.Identity.Name
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="/account/accountSetting">Hesap Ayarları</a>
+                                    <a class="dropdown-item" href="~/#aktif">Aktif Randevular</a>
+                                    <a class="dropdown-item" href="/profile/index">Admin Paneli</a>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item float-end">
+                            <a href="~/account/logout" style="color:#0d6efd" class="nav-link">Çıkış Yap</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Patient"))
+                    {
+                        <li class="nav-item ml-5">
+                            <div class="dropdown show ">
+                                <a style="color:#0d6efd" class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="bi bi-person"></i>  Sn. @User.Identity.Name
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="/account/accountSetting">Hesap Ayarları</a>
+                                    <a class="dropdown-item" href="~/#aktif">Aktif Randevular</a>
+
+                                </div>
+                            </div>
+
+                        </li>
+                        <li class="nav-item float-end">
+                            <a href="~/account/logout" style="color:#0d6efd" class="nav-link">Çıkış Yap</a>
+                        </li>
+
+                    }
+
+                }
+                else
+                {
+                    <li class="nav-item float-end">
+                        <a href="~/account/login" style="color:#0d6efd" class="nav-link">Giriş Yap</a>
+                    </li>
+                    <li class="nav-item float-end">
+                        <a href="~/account/register" style="color:#0d6efd" class="nav-link">Kaydol</a>
+                    </li>
+                }
+
+
+            </ul>
+        </div>
+
+
+    </div>
+</nav>
+

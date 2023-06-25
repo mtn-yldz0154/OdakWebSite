@@ -1,0 +1,59 @@
+﻿@model AddBlogViewModel
+@{
+   
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddBlog</title>
+</head>
+<body>
+    <br />
+    <h1>Blog Ekle</h1>
+    <hr />
+    <form asp-controller="Profile" asp-action="AddBlog" method="post" enctype="multipart/form-data">
+        <br />
+        <div class="col-md-12">
+            <div class="form-group row">
+                        <label asp-for="BlogName" class="col-sm-2 col-form-label"><b>Blog Adı</b></label>
+                        <div class="col-sm-8">
+                            <input asp-for="BlogName" class="form-control" >
+                    <span class="text-danger" asp-validation-for="BlogName"></span>
+      
+                        </div>
+             </div>
+             <br />
+            <div class="form-group row">
+                        <label asp-for ="BlogTitle" class="col-sm-2 col-form-label"><b>Blog Başlığı</b></label>
+                        <div class="col-sm-8">
+                            <input asp-for="BlogTitle"  class="form-control" >
+                    <span class="text-danger" asp-validation-for="BlogTitle"></span>
+                 
+                        </div>
+             </div>
+             <br />
+            <div class="form-group row">
+                <label asp-for="BlogContent" class="col-sm-2 col-form-label"><b>Blog İçeriği</b></label>
+                        <div class="col-sm-8">
+                    <textarea asp-for="BlogContent" type="" class="form-control"></textarea>
+                    <span class="text-danger" asp-validation-for="BlogContent"></span>
+                        </div>
+             </div>
+             <br />
+              <div class="form-group row">
+                <label asp-for="ImageUrl" class="col-sm-2 col-form-label"><b>Blog Resmi</b></label>
+                        <div class="col-sm-8">
+                    <input  type="file" name="ImageUrl" />
+                    <span class="text-danger" asp-validation-for="ImageUrl"></span>
+                        </div>
+             </div>
+        </div>
+            
+        <button type="submit" class="ml-3 btn btn-primary "> Blog Ekle</button>
+
+    </form>
+</body>
+</html>

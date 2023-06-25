@@ -1,0 +1,241 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = null;
+}
+
+@*<h1 class="text-center">Randevu Bilgi Sistemine Kayıt Ol</h1>
+
+
+<div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4">
+        <form asp-action="Register">
+          
+
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                    <input asp-for="Name" class="form-control">
+                </div>
+
+                
+
+             <div class="form-group">
+                <label asp-for="Surname"></label>
+                <span class="text-danger" asp-validation-for="Surname"></span>
+                <input asp-for="Surname" class="form-control">
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control">
+                <span class="text-danger" asp-validation-for="UserName"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="TC"></label>
+                <span class="text-danger" asp-validation-for="TC"></span>
+                <input asp-for="TC" class="form-control">
+            </div>
+
+
+
+             
+            <div class="form-group">
+                <label asp-for="PhoneNumber"></label>
+                <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                <input placeholder="05313670154" type="tel" asp-for="PhoneNumber" class="form-control">
+            </div>
+
+
+
+         
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <span class="text-danger" asp-validation-for="Email"></span>
+                <input asp-for="Email" class="form-control">
+            </div>
+       
+          
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <span class="text-danger" asp-validation-for="Password"></span>
+                <input asp-for="Password" class="form-control">
+            </div>
+           
+           @* <div class="form-group form-check">
+                <input asp-for="IsDentist" type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" asp-for="IsDentist"></label>
+           @* </div>
+            <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+        </form>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+
+</div>
+
+*@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login 10</title>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
+          rel="stylesheet" />
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="~/login-form-20/css/style.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background-image: url('../../img/konusma-sorunu-1200x580.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+    </style>
+
+</head>
+<body style="margin-top:-40px;" class="img js-fullheight">
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-9 text-center mb-5">
+                    <h2 class="heading-section">Özel ODAK Rehabilitasyon Merkezi Üye Kayıt Sayfası</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-7">
+                    <div class="login-wrap p-0">
+
+                        <form asp-controller="Account" asp-action="Register" method="post">
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <span class="text-danger" asp-validation-for="Name"></span>
+                                        <input style="border:1px solid white" asp-for="Name" placeholder="Adınız" type="text" class="form-control text-dark">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <span class="text-danger" asp-validation-for="Surname"></span>
+                                        <input style="border:1px solid white" asp-for="Surname" placeholder="Soyadınız" type="text" class="form-control text-dark">
+
+                                    </div>
+                                </div>
+                        </div>
+                        <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <span class="text-danger" asp-validation-for="UserName"></span>
+                                        <input style="border:1px solid white" asp-for="UserName" placeholder="Kullanıcı Adınız" type="text" class="form-control text-dark">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <span class="text-danger" asp-validation-for="TC"></span>
+                                        <input style="border:1px solid white" asp-for="TC" placeholder="TC" type="number" class="form-control text-dark">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <span class="text-danger" asp-validation-for="Email"></span>
+                                        <input style="border:1px solid white" asp-for="Email" placeholder="Mail Adresiniz" type="email" class="form-control text-dark">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                                        <input style="border:1px solid white" asp-for="PhoneNumber" placeholder="Telefon Numaranız"  type="number"  class="form-control text-dark">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <span class="text-danger" asp-validation-for="Password"></span>
+                                        <input style="border:1px solid white" asp-for="Password" placeholder="Parola" type="password" class="form-control text-dark">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <span class="text-danger" asp-validation-for="RePassword"></span>
+                                        <input style="border:1px solid white" asp-for="RePassword" placeholder="Tekrar Parola" type="password" class="form-control text-dark">
+
+                                    </div>
+                                </div>
+                            </div>
+            
+                      
+                            <div class="form-group">
+                                <button type="submit"
+                                        class="form-control btn btn-primary submit px-3">
+                                    Kaydol
+                                </button>
+                                <br /><br />
+                                <a href="/account/login"
+                                   class="form-control btn btn-primary submit px-3">
+                                    Giriş
+                                </a>
+                            </div>
+                            <div class="form-group d-md-flex">
+                                <div class="w-50">
+                                    <label class="checkbox-wrap checkbox-primary">
+                                        Beni Hatırla
+                                        <input type="checkbox" checked />
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/login-form-20/js/jquery.min.js"></script>
+    <script src="~/login-form-20/js/popper.js"></script>
+    <script src="~/login-form-20/js/bootstrap.min.js"></script>
+    <script src="~/login-form-20/js/main.js"></script>
+
+</body>
+</html>

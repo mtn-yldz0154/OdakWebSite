@@ -1,0 +1,63 @@
+﻿@using DentistCalendar.Data.Entity;
+
+@model List< Comment>
+
+@{
+    ViewData["Title"] = "Comments";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Yorumlar</h2>
+<hr />
+<br />
+<table class="w-80 mx-auto table table-bordered table-striped table-hover table-dark">
+
+    <thead>
+        <tr>
+            <th>İsim</th>
+            <th>Soyisim</th>
+            <th>Puan</th>
+            <th>Başlık</th>
+            <th>Açıklama</th>
+            <th>Onay Durumu</th>
+            <th>Onay İşlemi</th>
+            <th>Yorumu Sil</th>
+        </tr>
+    </thead>
+
+    <tbody>
+       
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.Puan</td>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                @if(item.Confirm)
+                {
+                    <td  class="text-success">Onaylı</td>
+                }
+                else
+                {
+                    <td class="text-danger ">Onaylı Değil</td>
+                }
+               
+                @if(item.Confirm)
+                {
+                    <td><a href="/admin/removeConfirm/@item.Id" class="btn btn-warning">Onayı Kaldır</a></td>
+                }
+                else
+                {
+                    <td><a href="/admin/ConfirmComments/@item.Id" class="btn btn-success">Onayla</a></td>
+                }
+               
+                <td><a href="/admin/deleteComments/@item.Id" class="btn btn-danger">Sil</a></td>
+            </tr>
+            }
+
+    </tbody>
+
+</table>
+

@@ -1,0 +1,53 @@
+﻿@using DentistCalendar.Data.Entity;
+@model List<Blog>
+@{
+    ViewData["Title"] = "Blogs";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h1>Bloglar</h1>
+<hr />
+<br />
+
+<table class="table table-bordered table-striped table-hover table-dark">
+
+    <thead>
+       <tr>
+            <th>Blog Adı</th>
+            <th>Blog Başlığı</th>
+            <th>Blog İçeriği</th>
+            <th>Blog Resmi</th>
+            <th>Blog Yazarı</th>
+            <th>Sil </th>
+       </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BlogName</td>
+                <td>@item.BlogTitle.Substring(0,25)...</td>
+                <td>@item.BlogContent.Substring(0,40)...</td>
+                <td><img width="120" height="60" src="~/blogimage/@item.BlogImageUrl" /></td>
+                @foreach (var doctor in ViewBag.Blogs)
+                {
+                    @if (doctor.Id==item.DoctorId)
+                    {
+                        <td> Dt. @doctor.Name @doctor.Surname</td>
+                    }
+                }
+                <td>
+                  
+                    <a href="~/admin/DeleteBlog/@item.Id" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+
+        }
+        
+    </tbody>
+</table>
+
+
+

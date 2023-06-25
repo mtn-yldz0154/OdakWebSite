@@ -1,0 +1,54 @@
+﻿@using DentistCalendar.Data.Entity;
+@model List< Blog>
+@{
+    ViewData["Title"] = "Blogs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12">
+    <br />
+    <h1 class="text-primary">Bloglar</h1>
+    <hr class="bg-primary" />
+    <br />
+
+    @if(Model.Count()==0)
+    {
+        <div class="alert alert-primary">Eklediğiniz Blog Yazısı Bulunmamaktadır! </div>
+    }
+    else
+    {
+        <table class=" table table table-bordered table-striped table-hover table-dark">
+
+            <thead>
+                <tr>
+                    <th>Blog Adı</th>
+                    <th>Blog Başlığı</th>
+                    <th>Blog İçeriği</th>
+                    <th>Blog Resmi</th>
+                    <th>Düzenle</th>
+                    <th>Sil</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (var blog in Model)
+                {
+                    <tr>
+                        <td>@blog.BlogName.Substring(0,15)...</td>
+                        <td>@blog.BlogTitle</td>
+                        <td>@blog.BlogContent.Substring(0,55)...</td>
+                        <td><img width="90" height="50" src="~/blogImage/@blog.BlogImageUrl" /></td>
+                        <td><a class="btn btn-info" href="/profile/updateBlog/@blog.Id">Düzenle</a></td>
+                        <td><a class="btn btn-danger" href="/profile/deleteBlog/@blog.Id">Sil</a></td>
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    }
+
+</div>
+
+
+
